@@ -4,9 +4,10 @@
     <string name="app_name">Socialsearch</string>
     <string name="action_settings">Settings</string>
     <string name="search_text">Search</string>
-    <string name="title_source_list">Sources</string>
-    <string name="title_source_detail">Source Detail</string>
+    <string name="title_provider_list">Sources</string>
+    <string name="title_provider_detail">Source Detail</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="hello_world">Hello world!</string>
-
+	<string name="no_result">No results were found</string>
+	
 </resources>

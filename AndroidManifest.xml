@@ -25,16 +25,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="nl.hanze.socialsearchclient.SourceListActivity"
-            android:label="@string/title_source_list" >
+            android:name="nl.hanze.socialsearchclient.ProviderListActivity"
+            android:label="@string/title_provider_list" >
         </activity>
         <activity
-            android:name="nl.hanze.socialsearchclient.SourceDetailActivity"
-            android:label="@string/title_source_detail"
-            android:parentActivityName=".SourceListActivity" >
+            android:name="nl.hanze.socialsearchclient.ProviderDetailActivity"
+            android:label="@string/title_provider_detail"
+            android:parentActivityName=".ProviderListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SourceListActivity" />
+                android:value=".ProviderListActivity" />
         </activity>
     </application>
 

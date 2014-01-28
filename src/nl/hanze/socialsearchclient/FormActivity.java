@@ -24,7 +24,7 @@ public class FormActivity extends Activity {
 	}
 	
 	public void search(View view) {
-		Intent intent = new Intent(this, SourceListActivity.class);
+		Intent intent = new Intent(this, ProviderListActivity.class);
 		EditText searchField = (EditText) findViewById(R.id.searchTerms);
 		String terms = searchField.getText().toString();
 		intent.putExtra(SEARCH_TERMS, terms);

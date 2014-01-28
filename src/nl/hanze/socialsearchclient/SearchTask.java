@@ -27,6 +27,10 @@ public class SearchTask extends AsyncTask<Void, Integer, Void> {
 		}
 	}
 	
+	public JSONObject getResult() {
+		return result;
+	}
+	
     @Override  
     protected void onPreExecute()  
     {  
