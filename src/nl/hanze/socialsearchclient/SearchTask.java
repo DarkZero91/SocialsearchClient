@@ -1,10 +1,9 @@
 package nl.hanze.socialsearchclient;
 
-import java.net.MalformedURLException;
-import java.util.Map;
-
 import nl.hanze.http.APIClient;
-import android.app.Activity;
+
+import org.json.JSONObject;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -13,14 +12,12 @@ import android.util.Log;
 public class SearchTask extends AsyncTask<Void, Integer, Void> {
 	private ProgressDialog progressDialog;
 	private Context context;
-	private Activity activity;
 	private APIClient client;
-	private Map result;
+	private JSONObject result;
 	private String searchTerms;
 	
-	public SearchTask(Context context, Activity activity, String searchTerms) {
+	public SearchTask(Context context, String searchTerms) {
 		this.context = context;
-		this.activity = activity;
 		
 		try {
 			client = new APIClient();
@@ -44,7 +41,7 @@ public class SearchTask extends AsyncTask<Void, Integer, Void> {
     		synchronized (this) {
     			result = client.searchTwitter(searchTerms);
     		}
-    	} catch (MalformedURLException e) {
+    	} catch (Exception e) {
 			Log.e("SearchTask", e.getMessage());
 		}           
     	

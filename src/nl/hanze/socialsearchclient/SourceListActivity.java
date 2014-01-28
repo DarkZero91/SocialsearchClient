@@ -47,7 +47,7 @@ public class SourceListActivity extends FragmentActivity implements
 		}
 
 		// TODO: If exposing deep links into your app, handle intents here.
-		new SearchTask(SourceListActivity.this, this, "kippetje").execute();
+		new SearchTask(SourceListActivity.this, "kippetje").execute();
 	}
 
 	/**
