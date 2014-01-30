@@ -68,11 +68,6 @@ public class ProviderListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		// TODO: replace with a real list adapter.
-		setListAdapter(new ArrayAdapter<ProviderContent.ProviderItem>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, ProviderContent.ITEMS));
 	}
 
 	@Override
@@ -147,5 +142,11 @@ public class ProviderListFragment extends ListFragment {
 		}
 
 		mActivatedPosition = position;
+	}
+	
+	public void showProviders() {
+		setListAdapter(new ArrayAdapter<ProviderContent.ProviderItem>(getActivity(),
+				android.R.layout.simple_list_item_activated_1,
+				android.R.id.text1, ProviderContent.ITEMS));
 	}
 }

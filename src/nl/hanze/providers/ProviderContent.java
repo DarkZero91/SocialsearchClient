@@ -2,8 +2,12 @@ package nl.hanze.providers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -23,14 +27,20 @@ public class ProviderContent {
 	 */
 	public static Map<String, ProviderItem> ITEM_MAP = new HashMap<String, ProviderItem>();
 
-	static {
-		// Add 3 sample items.
-		addItem(new ProviderItem("1", "Twitter", "Item 1"));
-		addItem(new ProviderItem("2", "Youtube", "Item 2"));
-		addItem(new ProviderItem("3", "Instagram", "Item 3"));
-		addItem(new ProviderItem("4", "Google", "Item 4"));
+	public static void setProviders(JSONObject json) {
+		try {
+			JSONObject results = json.getJSONObject("result");
+			Iterator<?> providers = results.keys();
+			
+			int i = 1;
+			while(providers.hasNext()) {
+				String provider = (String) providers.next();
+				addItem(new ProviderItem(Integer.toString(i), provider));
+				i++;
+			}
+		} catch (JSONException e) {}
 	}
-
+	
 	private static void addItem(ProviderItem item) {
 		ITEMS.add(item);
 		ITEM_MAP.put(item.id, item);
@@ -42,12 +52,10 @@ public class ProviderContent {
 	public static class ProviderItem {
 		public String id;
 		public String provider;
-		public String content;
 
-		public ProviderItem(String id, String provider, String content) {
+		public ProviderItem(String id, String provider) {
 			this.id = id;
-			this.provider = provider;
-			this.content = content;
+			this.provider = provider.substring(0, 1).toUpperCase() + provider.substring(1);
 		}
 		
 		@Override
