@@ -15,7 +15,7 @@ public class APIClient extends HTTPClient {
 	}
 	
 	public String searchAll(String terms) throws MalformedURLException, JSONException {
-		setUrl(host + "/search/");
+		setUrl(host + "/search.json/");
 		return search(terms);
 	}
 	

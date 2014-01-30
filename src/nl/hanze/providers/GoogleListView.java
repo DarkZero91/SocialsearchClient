@@ -5,9 +5,12 @@ import java.util.HashMap;
 
 import nl.hanze.socialsearchclient.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -15,6 +18,7 @@ public class GoogleListView extends ListView implements Provider {
 	
 	public GoogleListView(Context context, JSONObject results) {
 		super(context);
+		Log.i("Google", "JAAAAAAA");
 		
 		SimpleAdapter adapter = new SimpleAdapter(context,
 				getData(results),
@@ -26,15 +30,24 @@ public class GoogleListView extends ListView implements Provider {
 
 	@Override
 	public ArrayList<HashMap<String, ?>> getData(JSONObject json) {
+		Log.i("Google", json.toString());
 		ArrayList<HashMap<String, ?>> data = new ArrayList<HashMap<String, ?>>();
-		
-		for(int i = 0; i < 200; i++) {
-			HashMap<String, Object> row = new HashMap<String, Object>();
-			row.put("name", Integer.toString(i));
-			row.put("content", "test tweet (<- it's not really a tweet :P)");
-			data.add(row);
-		}
+		try {
+			JSONArray results = json.getJSONObject("result").getJSONObject("googleplus").getJSONArray("items");
+			Log.i("Google", results.toString());
+			for(int i = 0; i < results.length(); i++) {
+				JSONObject object = results.getJSONObject(i);
+				HashMap<String, Object> row = new HashMap<String, Object>();
 				
+				row.put("name", object.get("username"));
+				row.put("content", object.get("content"));
+				
+				data.add(row);
+			}
+		} catch (JSONException e) {
+			data = new ArrayList<HashMap<String, ?>>();
+		}
+		
 		return data;
 	}
 }

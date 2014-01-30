@@ -47,8 +47,7 @@ public class SearchTask extends AsyncTask<Void, Integer, Void> {
     
     @Override
     protected void onPostExecute(Void result) {
-    	progressDialog.dismiss();
-    	
+    	progressDialog.dismiss();	
     	// TODO Show results in SourceListActivity.
     	if(this.result != null) {
     		Log.i("SearchTask", this.result);
