@@ -2,6 +2,10 @@ package nl.hanze.socialsearchclient;
 
 import nl.hanze.providers.ProviderContent;
 import nl.hanze.providers.TwitterListView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -52,12 +56,20 @@ public class ProviderDetailFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_provider_detail,
 				container, false);
 
+		JSONObject results = null;
+		if (getArguments().containsKey(ProviderListActivity.SEARCH_RESULTS)) {
+			try {
+				results = new JSONObject(getArguments().getString(
+						ProviderListActivity.SEARCH_RESULTS));
+			} catch (JSONException e) {}
+		}
+		
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
 			((TextView) rootView.findViewById(R.id.source_detail))
 					.setText(mItem.content);
 			if(mItem.provider.equals("Twitter")) {
-				return new TwitterListView(getActivity(), null);
+				return new TwitterListView(getActivity(), results);
 			}
 		}
 
