@@ -20,9 +20,9 @@ public class APIClient extends HTTPClient {
 		return search(terms);
 	}
 	
-	public JSONObject searchTwitter(String terms) throws MalformedURLException, JSONException {
+	public JSONObject searchProvider(String terms, String provider) throws MalformedURLException, JSONException {
 		//setUrl(host + "/search/twitter.json"); // .json extension wont work in my test environment...
-		setUrl(host + "/search/twitter"); // This does work in my test environment...
+		setUrl(host + "/search/" + provider); // This does work in my test environment...
 		return search(terms);
 	}
 	

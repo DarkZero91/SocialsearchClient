@@ -43,7 +43,7 @@ public class SearchTask extends AsyncTask<Void, Integer, Void> {
     protected Void doInBackground(Void... params) {
     	try {
     		synchronized (this) {
-    			result = client.searchTwitter(searchTerms);
+    			result = client.searchAll(searchTerms);
     		}
     	} catch (Exception e) {
 			Log.e("SearchTask", e.getMessage());

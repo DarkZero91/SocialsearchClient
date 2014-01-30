@@ -28,6 +28,7 @@ public class ProviderContent {
 		addItem(new ProviderItem("1", "Twitter", "Item 1"));
 		addItem(new ProviderItem("2", "Youtube", "Item 2"));
 		addItem(new ProviderItem("3", "Instagram", "Item 3"));
+		addItem(new ProviderItem("4", "Google", "Item 4"));
 	}
 
 	private static void addItem(ProviderItem item) {
