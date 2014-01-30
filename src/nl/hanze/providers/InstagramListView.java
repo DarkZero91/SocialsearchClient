@@ -14,16 +14,16 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-public class GoogleListView extends ListView implements Provider {
+public class InstagramListView extends ListView implements Provider {
 	
-	public GoogleListView(Context context, JSONObject results) {
+	public InstagramListView(Context context, JSONObject results) {
 		super(context);
 		
 		SimpleAdapter adapter = new SimpleAdapter(context,
 				getData(results),
-				R.layout.google_row,
-				new String[] {"name","content"},
-				new int[] {R.id.googleName, R.id.googleContent});
+				R.layout.instagram_row,
+				new String[] {"name","desc"},
+				new int[] {R.id.instaName, R.id.instaDesc});
 		setAdapter(adapter);
 	}
 
@@ -31,13 +31,13 @@ public class GoogleListView extends ListView implements Provider {
 	public ArrayList<HashMap<String, ?>> getData(JSONObject json) {
 		ArrayList<HashMap<String, ?>> data = new ArrayList<HashMap<String, ?>>();
 		try {
-			JSONArray results = json.getJSONObject("result").getJSONObject("googleplus").getJSONArray("items");
+			JSONArray results = json.getJSONObject("result").getJSONObject("instagram").getJSONArray("items");
 			for(int i = 0; i < results.length(); i++) {
 				JSONObject object = results.getJSONObject(i);
 				HashMap<String, Object> row = new HashMap<String, Object>();
 				
 				row.put("name", object.get("username"));
-				row.put("content", object.get("content"));
+				row.put("desc", object.get("content"));
 				
 				data.add(row);
 			}
