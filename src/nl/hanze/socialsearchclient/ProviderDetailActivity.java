@@ -37,6 +37,8 @@ public class ProviderDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
+			arguments.putString(ProviderListActivity.SEARCH_RESULTS, getIntent()
+					.getStringExtra(ProviderListActivity.SEARCH_RESULTS));
 			arguments.putString(ProviderDetailFragment.ARG_ITEM_ID, getIntent()
 					.getStringExtra(ProviderDetailFragment.ARG_ITEM_ID));
 			ProviderDetailFragment fragment = new ProviderDetailFragment();

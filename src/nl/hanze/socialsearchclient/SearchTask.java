@@ -1,9 +1,6 @@
 package nl.hanze.socialsearchclient;
 
 import nl.hanze.http.APIClient;
-
-import org.json.JSONObject;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -13,7 +10,7 @@ public class SearchTask extends AsyncTask<Void, Integer, Void> {
 	private ProgressDialog progressDialog;
 	private Context context;
 	private APIClient client;
-	private JSONObject result;
+	private String result;
 	private String searchTerms;
 	
 	public SearchTask(Context context, String searchTerms) {
@@ -25,10 +22,6 @@ public class SearchTask extends AsyncTask<Void, Integer, Void> {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public JSONObject getResult() {
-		return result;
 	}
 	
     @Override  
@@ -57,9 +50,11 @@ public class SearchTask extends AsyncTask<Void, Integer, Void> {
     	progressDialog.dismiss();
     	
     	// TODO Show results in SourceListActivity.
-    	if(this.result != null)
-    		Log.i("SearchTask", this.result.toString());
-    	else
+    	if(this.result != null) {
+    		Log.i("SearchTask", this.result);
+    		ProviderListActivity activity = (ProviderListActivity) context;
+    		activity.setResults(this.result);
+    	} else
     		Log.i("SearchTask", "No Result");
     }
 }

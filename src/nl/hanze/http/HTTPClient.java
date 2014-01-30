@@ -46,6 +46,17 @@ public class HTTPClient {
 			response = readResponse();
 		} catch(IOException ioe) {
 			Log.e("HTTPClient", "IOException: " + ioe.getLocalizedMessage(), ioe);
+			
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+			String line;
+			String error = new String();
+			try {
+				while((line = reader.readLine()) != null) {
+					error += line;
+				}
+			} catch (IOException e) {}
+			
+			Log.e("HTTPClient", error);
 		}
 		
 		params = new HashMap<String, String>();
