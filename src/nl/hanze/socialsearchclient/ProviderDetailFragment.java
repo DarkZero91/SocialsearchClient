@@ -67,7 +67,7 @@ public class ProviderDetailFragment extends Fragment {
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
 			((TextView) rootView.findViewById(R.id.source_detail))
-					.setText(mItem.content);
+					.setText("No results found");
 			if(mItem.provider.equals("Twitter")) {
 				return new TwitterListView(getActivity(), results);
 			}

@@ -1,5 +1,10 @@
 package nl.hanze.socialsearchclient;
 
+import nl.hanze.providers.ProviderContent;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -30,7 +35,7 @@ public class ProviderListActivity extends FragmentActivity implements
 	 */
 	private boolean mTwoPane;
 	private SearchTask searchTask;
-	private String results;	
+	private String results;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,5 +90,10 @@ public class ProviderListActivity extends FragmentActivity implements
 	
 	public void setResults(String results) {
 		this.results = results;
+		try {
+			ProviderContent.setProviders(new JSONObject(results));
+			((ProviderListFragment) getSupportFragmentManager().findFragmentById(
+					R.id.source_list)).showProviders();
+		} catch (JSONException e) {}
 	}
 }
