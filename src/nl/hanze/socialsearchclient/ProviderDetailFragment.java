@@ -70,7 +70,7 @@ public class ProviderDetailFragment extends Fragment {
 					.setText("No results found");
 			if(mItem.provider.equals("Twitter")) {
 				return new TwitterListView(getActivity(), results);
-			} else if(mItem.provider.equals("Google")) {
+			} else if(mItem.provider.equals("Googleplus")) {
 				return new GoogleListView(getActivity(), results);
 			} else if(mItem.provider.equals("Youtube")) {
 				return new YoutubeListView(getActivity(), results);
