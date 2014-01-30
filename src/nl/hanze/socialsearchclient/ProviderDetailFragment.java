@@ -1,7 +1,9 @@
 package nl.hanze.socialsearchclient;
 
+import nl.hanze.providers.GoogleListView;
 import nl.hanze.providers.ProviderContent;
 import nl.hanze.providers.TwitterListView;
+import nl.hanze.providers.YoutubeListView;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -58,6 +60,10 @@ public class ProviderDetailFragment extends Fragment {
 					.setText(mItem.content);
 			if(mItem.provider.equals("Twitter")) {
 				return new TwitterListView(getActivity(), null);
+			} else if(mItem.provider.equals("Google")) {
+				return new GoogleListView(getActivity(), null);
+			} else if(mItem.provider.equals("Youtube")) {
+				return new YoutubeListView(getActivity(), null);
 			}
 		}
 
