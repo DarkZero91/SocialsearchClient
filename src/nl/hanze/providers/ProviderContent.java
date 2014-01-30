@@ -9,8 +9,6 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.

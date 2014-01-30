@@ -1,11 +1,11 @@
 package nl.hanze.socialsearchclient;
 
+import nl.hanze.providers.GoogleListView;
 import nl.hanze.providers.ProviderContent;
 import nl.hanze.providers.TwitterListView;
-
+import nl.hanze.providers.YoutubeListView;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -70,6 +70,10 @@ public class ProviderDetailFragment extends Fragment {
 					.setText("No results found");
 			if(mItem.provider.equals("Twitter")) {
 				return new TwitterListView(getActivity(), results);
+			} else if(mItem.provider.equals("Google")) {
+				return new GoogleListView(getActivity(), results);
+			} else if(mItem.provider.equals("Youtube")) {
+				return new YoutubeListView(getActivity(), results);
 			}
 		}
 

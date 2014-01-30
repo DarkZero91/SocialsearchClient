@@ -15,13 +15,13 @@ public class APIClient extends HTTPClient {
 	}
 	
 	public String searchAll(String terms) throws MalformedURLException, JSONException {
-		setUrl(host + "/search/");
+		setUrl(host + "/search.json/");
 		return search(terms);
 	}
 	
-	public String searchTwitter(String terms) throws MalformedURLException, JSONException {
-		// setUrl(host + "/search/twitter/");
-		setUrl(host + "/search/twitter/kippetje.php");
+	public String searchProvider(String terms, String provider) throws MalformedURLException, JSONException {
+		//setUrl(host + "/search/twitter.json"); // .json extension wont work in my test environment...
+		setUrl(host + "/search/" + provider); // This does work in my test environment...
 		return search(terms);
 	}
 	
