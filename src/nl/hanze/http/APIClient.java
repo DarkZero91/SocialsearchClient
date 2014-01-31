@@ -25,8 +25,6 @@ public class APIClient extends HTTPClient {
 		return search(terms);
 	}
 	
-	// TODO add search methods for all the other providers. (Hint: look at searchTwitter() :P)
-	
 	private String search(String terms) throws JSONException {
 		setParam("search", terms);
 		return sendRequest();

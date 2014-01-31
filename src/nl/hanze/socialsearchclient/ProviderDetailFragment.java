@@ -6,13 +6,19 @@ import nl.hanze.providers.InstagramListView;
 import nl.hanze.providers.ProviderContent;
 import nl.hanze.providers.TwitterListView;
 import nl.hanze.providers.YoutubeListView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -71,15 +77,26 @@ public class ProviderDetailFragment extends Fragment {
 			((TextView) rootView.findViewById(R.id.source_detail))
 					.setText("No results found");
 			if(mItem.provider.equals("Twitter")) {
-				return new TwitterListView(getActivity(), results);
+				rootView = new TwitterListView(getActivity(), results);
 			} else if(mItem.provider.equals("Googleplus")) {
-				return new GoogleListView(getActivity(), results);
+				rootView = new GoogleListView(getActivity(), results);
 			} else if(mItem.provider.equals("Youtube")) {
-				return new YoutubeListView(getActivity(), results);
+				rootView = new YoutubeListView(getActivity(), results);
 			} else if(mItem.provider.equals("Flickr")) {
-				return new FlickrListView(getActivity(), results);
+				rootView = new FlickrListView(getActivity(), results);
 			} else if(mItem.provider.equals("Instagram")) {
-				return new InstagramListView(getActivity(), results);
+				rootView = new InstagramListView(getActivity(), results);
+			}
+			
+			if(rootView instanceof ListView) {
+				ListView view = (ListView) rootView;
+				view.setOnItemClickListener(new OnItemClickListener() {
+		            @Override
+		            public void onItemClick(AdapterView<?> parent, View view, int position,
+		                    long id) {
+		            	Log.i("ListView", "Click click mtf: " + position);
+		            }
+		        });
 			}
 		}
 
