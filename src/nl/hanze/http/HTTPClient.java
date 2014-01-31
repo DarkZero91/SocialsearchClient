@@ -97,6 +97,7 @@ public class HTTPClient {
 		}
 		
 		OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+		Log.i("Login", params);
 		writer.write(params);
 		writer.close();
 	}
