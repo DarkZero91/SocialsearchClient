@@ -32,9 +32,9 @@ public final class R {
         public static final int googleName=0x7f080008;
         public static final int instaDesc=0x7f08000b;
         public static final int instaName=0x7f08000a;
-        public static final int loginPassword=0x7f08000c;
-        public static final int loginSubmit=0x7f08000e;
-        public static final int loginUsername=0x7f08000d;
+        public static final int loginPassword=0x7f08000e;
+        public static final int loginSubmit=0x7f08000d;
+        public static final int loginUsername=0x7f08000c;
         public static final int searchButton=0x7f080001;
         public static final int searchTerms=0x7f080000;
         public static final int source_detail=0x7f080006;

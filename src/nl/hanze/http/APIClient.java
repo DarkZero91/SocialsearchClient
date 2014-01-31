@@ -27,10 +27,10 @@ public class APIClient extends HTTPClient {
 	
 	public String login(String username, String password) throws MalformedURLException, JSONException {
 		setUrl(host + "/users/sign_in.json");
-		setParam("email", username);
-		setParam("password", password);
-		setParam("utf8", "&#x2713;");
+		setParam("user[email]", username);
+		setParam("user[password]", password);
 		setParam("authenticity_token", "ZPYde072a9uLdBsuNYumraRjXesdGorwtV7vs+nzWW8=");
+		setParam("commit", "Sign In");
 		return sendRequest();
 	}
 	

@@ -32,4 +32,10 @@ public class LoginActivity extends Activity {
 		task = new LoginTask(this, username, password);
 		task.execute();
 	}
+	
+	// Intent
+	public void loginCallback() {
+		Intent intent = new Intent(this, FormActivity.class);
+		startActivity(intent);
+	}
 }
