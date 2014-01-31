@@ -1,6 +1,8 @@
 package nl.hanze.socialsearchclient;
 
+import nl.hanze.providers.FlickrListView;
 import nl.hanze.providers.GoogleListView;
+import nl.hanze.providers.InstagramListView;
 import nl.hanze.providers.ProviderContent;
 import nl.hanze.providers.TwitterListView;
 import nl.hanze.providers.YoutubeListView;
@@ -74,6 +76,10 @@ public class ProviderDetailFragment extends Fragment {
 				return new GoogleListView(getActivity(), results);
 			} else if(mItem.provider.equals("Youtube")) {
 				return new YoutubeListView(getActivity(), results);
+			} else if(mItem.provider.equals("Flickr")) {
+				return new FlickrListView(getActivity(), results);
+			} else if(mItem.provider.equals("Instagram")) {
+				return new InstagramListView(getActivity(), results);
 			}
 		}
 
