@@ -36,8 +36,4 @@ public class FormActivity extends Activity {
 		intent.putExtra(SEARCH_TERMS, terms);
 		startActivity(intent);
 	}
-	
-	public void setResults(String results) {
-		this.results = results;
-	}
 }

@@ -57,7 +57,9 @@ public class ProviderListActivity extends FragmentActivity implements
 		}
 
 		// TODO: If exposing deep links into your app, handle intents here.
-		searchTask = new SearchTask(this, "kippetje");
+		Intent intent = getIntent();
+		String terms = intent.getStringExtra(FormActivity.SEARCH_TERMS);
+		searchTask = new SearchTask(this, terms);
 		searchTask.execute();
 	}
 
