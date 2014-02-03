@@ -1,13 +1,20 @@
 package nl.hanze.tasks;
 
 import nl.hanze.http.APIClient;
+import nl.hanze.socialsearchclient.LoginActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 public class LoginTask extends AsyncTask<Void, Integer, Void> {
 	private ProgressDialog progressDialog;
+	private Toast toast;
 	private Context context;
 	private APIClient client;
 	private String result;
@@ -52,8 +59,19 @@ public class LoginTask extends AsyncTask<Void, Integer, Void> {
     @Override
     protected void onPostExecute(Void result) {
     	progressDialog.dismiss();
-        progressDialog = ProgressDialog.show(context,result.toString(),  
-                null, false, false);
-        progressDialog.show();
+    	JSONObject json;
+		try {
+			json = new JSONObject(this.result);
+	    	if(json.has("username")) {
+	    		LoginActivity activity = (LoginActivity) context;
+	    		activity.loginCallback();
+	    	} else {
+	            toast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+	            toast.setText("Wrong email/password combination");
+	        	toast.show();
+	    	}
+		} catch (JSONException e) {
+			Log.i("Error JSON", e.toString());
+		}
     }
 }
