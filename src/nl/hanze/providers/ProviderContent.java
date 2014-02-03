@@ -25,9 +25,11 @@ public class ProviderContent {
 	/**
 	 * A map of sample (provider) items, by ID.
 	 */
-	public static Map<String, ProviderItem> ITEM_MAP = new HashMap<String, ProviderItem>();
+	public static Map<String, ProviderItem> ITEM_MAP;
 
 	public static void setProviders(JSONObject json) {
+		ITEM_MAP = new HashMap<String, ProviderItem>();
+		
 		try {
 			JSONObject results = json.getJSONObject("result");
 			Iterator<?> providers = results.keys();

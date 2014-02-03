@@ -33,8 +33,7 @@ public class LoadImageTask extends AsyncTask<Void, Integer, Void> {
 			synchronized (this) {
 				// Busdriver! LOAD... THAT... IMAGE!!!
 				Log.i("LoadImageTask", "Busdriver! LOAD... THAT... IMAGE!!! (" + url + ")");
-				Bitmap bitmap = ImageLoader.load(url);				
-				adapter.setImage(image, bitmap);
+				ImageLoader.load(image, url);
 			}
 		} catch (Exception e) {
 			Log.e("LoadImageTask", e.getMessage());

@@ -16,7 +16,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 public class ImageLoader {
-	public static Bitmap load(String url) {
+	public static void load(ImageView view, String url) {
 		try {
 	        URL source = new URL(url);
 	        HttpGet httpRequest = null;
@@ -31,12 +31,10 @@ public class ImageLoader {
 	        BufferedHttpEntity b_entity = new BufferedHttpEntity(entity);
 	        InputStream input = b_entity.getContent();
 
-	        return BitmapFactory.decodeStream(input);       
+	        Bitmap bitmap = BitmapFactory.decodeStream(input);
+	        view.setImageBitmap(bitmap);
 	    } catch (Exception ex) {
 	    	Log.e("ImageLoader", ex.getMessage());
-	    } finally {
-	    	return null;
 	    }
 	}
-	
 }

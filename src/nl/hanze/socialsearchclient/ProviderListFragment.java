@@ -4,6 +4,7 @@ import nl.hanze.providers.ProviderContent;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -145,6 +146,7 @@ public class ProviderListFragment extends ListFragment {
 	}
 	
 	public void showProviders() {
+		Log.i("ProviderListAdapter", "Show providers");
 		setListAdapter(new ArrayAdapter<ProviderContent.ProviderItem>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
 				android.R.id.text1, ProviderContent.ITEMS));

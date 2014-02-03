@@ -21,7 +21,7 @@ public class CustomListAdapter extends BaseAdapter {
 	private int resource;
 	private String[] from;
 	private int[] to;
-	
+
 	public CustomListAdapter(Context context, ArrayList<HashMap<String, ?>> data,
 			int resource, String[] from, int[] to) {
 		this.context = context;
@@ -48,36 +48,37 @@ public class CustomListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View rootView = convertView;
-		
-		if(convertView == null)
-			rootView = LayoutInflater.from(context)
+		try {
+			View rootView = convertView;
+
+			if(convertView == null)
+				rootView = LayoutInflater.from(context)
 				.inflate(resource, parent, false);
 
-	    for(int i = 0; i < from.length; i++) {
-	    	View view = rootView.findViewById(to[i]);
-	    	
-	    	if(view instanceof TextView) {
-	    		Log.i("CustomListAdapter", "Just text...");
-	    		TextView tView = (TextView) view;
-	    		tView.setText((String) data.get(position).get(from[i]));
-	    	}
-	    	else if(view instanceof ImageView) {
-	    		// Download the sucker.
-	    		Log.i("CustomListAdapter", "Download that sucker");
-	    		LoadImageTask task = new LoadImageTask(
-	    				null,
-	    				this,
-	    				(ImageView) view,
-	    				(String) data.get(position).get(from[i]));
-	    		task.execute();
-	    	}
-	    }
+			for(int i = 0; i < from.length; i++) {
+				View view = rootView.findViewById(to[i]);
 
-	    return rootView;
-	}
-	
-	public void setImage(ImageView view, Bitmap image) {
-        view.setImageBitmap(image);
+				if(view instanceof TextView) {
+					Log.i("CustomListAdapter", "Just text...");
+					TextView tView = (TextView) view;
+					tView.setText((String) data.get(position).get(from[i]));
+				}
+				else if(view instanceof ImageView) {
+					// Download the sucker.
+					Log.i("CustomListAdapter", "Download that sucker");
+					LoadImageTask task = new LoadImageTask(
+							null,
+							this,
+							(ImageView) view,
+							(String) data.get(position).get(from[i]));
+					task.execute();
+				}
+			}
+
+			return rootView;
+		} catch(Exception e) {
+			Log.e("CustomListAdapter", e.getMessage());
+			return null;
+		}
 	}
 }
