@@ -20,7 +20,7 @@ public class ProviderContent {
 	/**
 	 * An array of sample (provider) items.
 	 */
-	public static List<ProviderItem> ITEMS = new ArrayList<ProviderItem>();
+	public static List<ProviderItem> ITEMS;
 
 	/**
 	 * A map of sample (provider) items, by ID.
@@ -28,6 +28,7 @@ public class ProviderContent {
 	public static Map<String, ProviderItem> ITEM_MAP;
 
 	public static void setProviders(JSONObject json) {
+		ITEMS = new ArrayList<ProviderItem>();
 		ITEM_MAP = new HashMap<String, ProviderItem>();
 		
 		try {

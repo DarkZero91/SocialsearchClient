@@ -25,8 +25,10 @@ public class TwitterListView extends ListView implements Provider {
 		CustomListAdapter adapter = new CustomListAdapter(context,
 				getData(results),
 				R.layout.twitter_row,
-				new String[] {"name","content", "image_url"},
-				new int[] {R.id.textView1, R.id.textView2, R.id.imageView1});
+//				new String[] {"name","content", "image_url"},
+//				new int[] {R.id.textView1, R.id.textView2, R.id.imageView1});
+				new String[] {"name","content"},
+				new int[] {R.id.textView1, R.id.textView2});
 		setAdapter(adapter);
 	}
 
