@@ -21,11 +21,12 @@ public class TwitterListView extends ListView implements Provider {
 	public TwitterListView(Context context, JSONObject results) {
 		super(context);
 		
-		SimpleAdapter adapter = new SimpleAdapter(context,
+		//SimpleAdapter adapter = new SimpleAdapter(context,
+		CustomListAdapter adapter = new CustomListAdapter(context,
 				getData(results),
 				R.layout.twitter_row,
-				new String[] {"name","content"},
-				new int[] {R.id.textView1, R.id.textView2});
+				new String[] {"name","content", "image_url"},
+				new int[] {R.id.textView1, R.id.textView2, R.id.imageView1});
 		setAdapter(adapter);
 	}
 
@@ -41,6 +42,9 @@ public class TwitterListView extends ListView implements Provider {
 				
 				row.put("name", object.get("username"));
 				row.put("content", object.get("content"));
+				
+				JSONObject image = object.getJSONObject("image");
+				row.put("image_url", "http://" + image.getString("host") + image.getString("path"));
 				
 				data.add(row);
 			}

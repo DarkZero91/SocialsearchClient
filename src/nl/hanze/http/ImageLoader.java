@@ -12,24 +12,16 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.widget.ImageView;
 
-public class ImageLoader implements Runnable {
-	private ImageView image;
-	private String url;
-	
-	public ImageLoader(ImageView image, String url) {
-		this.image = image;
-		this.url = url;
-	}
-	
-	@Override
-	public void run() {
+public class ImageLoader {
+	public static Bitmap load(String url) {
 		try {
-	        URL url = new URL(this.url);
+	        URL source = new URL(url);
 	        HttpGet httpRequest = null;
 
-	        httpRequest = new HttpGet(url.toURI());
+	        httpRequest = new HttpGet(source.toURI());
 
 	        HttpClient httpclient = new DefaultHttpClient();
 	        HttpResponse response = (HttpResponse) httpclient
@@ -39,10 +31,12 @@ public class ImageLoader implements Runnable {
 	        BufferedHttpEntity b_entity = new BufferedHttpEntity(entity);
 	        InputStream input = b_entity.getContent();
 
-	        Bitmap bitmap = BitmapFactory.decodeStream(input);
-
-	        image.setImageBitmap(bitmap);
-	    } catch (Exception ex) {}
+	        return BitmapFactory.decodeStream(input);       
+	    } catch (Exception ex) {
+	    	Log.e("ImageLoader", ex.getMessage());
+	    } finally {
+	    	return null;
+	    }
 	}
 	
 }

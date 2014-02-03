@@ -19,7 +19,8 @@ public class GoogleListView extends ListView implements Provider {
 	public GoogleListView(Context context, JSONObject results) {
 		super(context);
 		
-		SimpleAdapter adapter = new SimpleAdapter(context,
+		//SimpleAdapter adapter = new SimpleAdapter(context,
+		CustomListAdapter adapter = new CustomListAdapter(context,
 				getData(results),
 				R.layout.google_row,
 				new String[] {"name","content"},

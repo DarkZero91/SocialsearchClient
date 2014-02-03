@@ -19,7 +19,8 @@ public class InstagramListView extends ListView implements Provider {
 	public InstagramListView(Context context, JSONObject results) {
 		super(context);
 		
-		SimpleAdapter adapter = new SimpleAdapter(context,
+		//SimpleAdapter adapter = new SimpleAdapter(context,
+		CustomListAdapter adapter = new CustomListAdapter(context,
 				getData(results),
 				R.layout.instagram_row,
 				new String[] {"name","desc"},

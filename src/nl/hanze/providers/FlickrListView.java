@@ -19,7 +19,8 @@ public class FlickrListView extends ListView implements Provider {
 	public FlickrListView(Context context, JSONObject results) {
 		super(context);
 		
-		SimpleAdapter adapter = new SimpleAdapter(context,
+		//SimpleAdapter adapter = new SimpleAdapter(context,
+		CustomListAdapter adapter = new CustomListAdapter(context,
 				getData(results),
 				R.layout.flickr_row,
 				new String[] {"name","description"},

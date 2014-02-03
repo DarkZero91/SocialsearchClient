@@ -24,6 +24,15 @@ public class APIClient extends HTTPClient {
 		setUrl(host + "/search/" + provider); // This does work in my test environment...
 		return search(terms);
 	}
+
+	public String login(String username, String password) throws MalformedURLException, JSONException {
+		setUrl(host + "/users/sign_in.json");
+		setParam("email", username);
+		setParam("password", password);
+		setParam("utf8", "&#x2713;");
+		setParam("authenticity_token", "ZPYde072a9uLdBsuNYumraRjXesdGorwtV7vs+nzWW8=");
+		return sendRequest();
+	}
 	
 	private String search(String terms) throws JSONException {
 		setParam("search", terms);

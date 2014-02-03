@@ -1,6 +1,7 @@
-package nl.hanze.socialsearchclient;
+package nl.hanze.tasks;
 
 import nl.hanze.http.APIClient;
+import nl.hanze.socialsearchclient.ProviderListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;

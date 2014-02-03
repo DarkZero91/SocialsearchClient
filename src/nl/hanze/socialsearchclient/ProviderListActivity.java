@@ -1,6 +1,7 @@
 package nl.hanze.socialsearchclient;
 
 import nl.hanze.providers.ProviderContent;
+import nl.hanze.tasks.SearchTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;

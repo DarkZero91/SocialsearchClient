@@ -19,7 +19,8 @@ public class YoutubeListView extends ListView implements Provider {
 	public YoutubeListView(Context context, JSONObject results) {
 		super(context);
 		
-		SimpleAdapter adapter = new SimpleAdapter(context,
+		//SimpleAdapter adapter = new SimpleAdapter(context,
+		CustomListAdapter adapter = new CustomListAdapter(context,
 				getData(results),
 				R.layout.youtube_row,
 				new String[] {"title","desc"},

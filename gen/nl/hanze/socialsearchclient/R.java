@@ -24,24 +24,27 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080011;
+        public static final int action_settings=0x7f080014;
         public static final int flickrDescription=0x7f080005;
         public static final int flickrName=0x7f080004;
         public static final int googleContent=0x7f080009;
         public static final int googleImage=0x7f080007;
         public static final int googleName=0x7f080008;
-        public static final int imageView1=0x7f08000c;
+        public static final int imageView1=0x7f08000f;
         public static final int instaDesc=0x7f08000b;
         public static final int instaName=0x7f08000a;
+        public static final int loginPassword=0x7f08000c;
+        public static final int loginSubmit=0x7f08000e;
+        public static final int loginUsername=0x7f08000d;
         public static final int searchButton=0x7f080001;
         public static final int searchTerms=0x7f080000;
         public static final int source_detail=0x7f080006;
         public static final int source_detail_container=0x7f080002;
         public static final int source_list=0x7f080003;
-        public static final int textView1=0x7f08000d;
-        public static final int textView2=0x7f08000e;
-        public static final int youtubeDesc=0x7f080010;
-        public static final int youtubeTitle=0x7f08000f;
+        public static final int textView1=0x7f080010;
+        public static final int textView2=0x7f080011;
+        public static final int youtubeDesc=0x7f080013;
+        public static final int youtubeTitle=0x7f080012;
     }
     public static final class layout {
         public static final int activity_form=0x7f030000;
@@ -69,8 +72,9 @@ public final class R {
         public static final int fragment_provider_detail=0x7f030005;
         public static final int google_row=0x7f030006;
         public static final int instagram_row=0x7f030007;
-        public static final int twitter_row=0x7f030008;
-        public static final int youtube_row=0x7f030009;
+        public static final int login_form=0x7f030008;
+        public static final int twitter_row=0x7f030009;
+        public static final int youtube_row=0x7f03000a;
     }
     public static final class menu {
         public static final int search=0x7f070000;
